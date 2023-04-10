@@ -1,0 +1,7 @@
+{
+  "compression_threshold": 1,
+  "compression_algorithm": "deflate",
+  "client_throttle": false,
+  "client_throttle_threshold": 0,
+  "client_throttle_scalar": 0
+}

@@ -4,7 +4,7 @@
     "moduleResolution": "nodenext",
     "target": "esnext",
     "allowJs": true,
-    "outDir": "build"
+    "outDir": "build",
   },
   "include": [
     "source",

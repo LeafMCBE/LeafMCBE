@@ -1,3 +1,6 @@
 {
-    "exec": "node --loader ts-node/esm ."   
+  "exec": "node --loader ts-node/esm",
+  "verbose": true,
+  "ignore": ["build", "node_modules"],
+  "ext": "ts,js,json"
 }

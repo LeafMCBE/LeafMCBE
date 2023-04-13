@@ -1,3 +1,3 @@
-import Server from "./src/Server.js";
+import Server from "./source/Server";
 
 new Server();

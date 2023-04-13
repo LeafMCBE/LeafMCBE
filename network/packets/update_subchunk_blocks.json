@@ -1,0 +1,74 @@
+{
+  "x": -64,
+  "y": 2147483632,
+  "z": 160,
+  "blocks": [
+    {
+      "position": {
+        "x": -50,
+        "y": -19,
+        "z": 173
+      },
+      "runtime_id": 8162,
+      "flags": 2,
+      "entity_unique_id": "-9223372036854775808",
+      "transition_type": "entity"
+    },
+    {
+      "position": {
+        "x": -50,
+        "y": -20,
+        "z": 173
+      },
+      "runtime_id": 6989,
+      "flags": 3,
+      "entity_unique_id": "-9223372036854775808",
+      "transition_type": "entity"
+    },
+    {
+      "position": {
+        "x": -50,
+        "y": -18,
+        "z": 174
+      },
+      "runtime_id": 8163,
+      "flags": 2,
+      "entity_unique_id": "-9223372036854775808",
+      "transition_type": "entity"
+    },
+    {
+      "position": {
+        "x": -50,
+        "y": -19,
+        "z": 174
+      },
+      "runtime_id": 6990,
+      "flags": 3,
+      "entity_unique_id": "-9223372036854775808",
+      "transition_type": "entity"
+    },
+    {
+      "position": {
+        "x": -50,
+        "y": -19,
+        "z": 173
+      },
+      "runtime_id": 8162,
+      "flags": 2,
+      "entity_unique_id": "-9223372036854775808",
+      "transition_type": "entity"
+    },
+    {
+      "position": {
+        "x": -50,
+        "y": -18,
+        "z": 174
+      },
+      "runtime_id": 8163,
+      "flags": 2,
+      "entity_unique_id": "-9223372036854775808",
+      "transition_type": "entity"
+    }
+  ],
+  "extra": []
+}

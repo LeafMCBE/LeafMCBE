@@ -5,7 +5,7 @@ import Player from "../Player";
 import Colors from "../../utils/Colors";
 
 class CommandsManager {
-  private readonly commands: Command[];
+  private readonly commands: Command[] = [];
 
   constructor() {
     this.start();
@@ -29,14 +29,14 @@ class CommandsManager {
         did = true;
         const { max, min } = command.options.arguments[1];
 
-        if (parameters.length > max)
+        if (max != -1 && parameters.length > max)
           return player.send(
             Colors.red(
               `Syntax Error: Maximum Arguments is ${max} but received ${parameters.length}`
             )
           );
 
-        if (min < parameters.length)
+        if (min > parameters.length)
           return player.send(
             Colors.red(
               `Syntax Error: Minimum Arguments is ${min} but received ${parameters.length}`

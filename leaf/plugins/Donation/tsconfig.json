@@ -5,5 +5,5 @@
     "target": "esnext",
     "allowJs": true,
     "outDir": "build",
-  }
+  },
 }

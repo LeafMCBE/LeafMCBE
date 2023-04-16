@@ -76,20 +76,30 @@ const Colors = {
     else return `§f${text}§r`;
   },
 
-  toConsole(text: string): string {
-    colors.forEach((c, i) => {
-      text.replaceAll(c.mc, c.console);
-    });
-
-    return text
+  bold(text: string, console?: boolean) {
+    if (console) return chalk.bold(text);
+    else return `§l${text}§r`;
   },
 
-  toMinecraft(text: string): string {
-    colors.forEach((c, i) => {
-      text.replaceAll(c.console, c.mc);
+  italic(text: string, console?: boolean) {
+    if (console) return chalk.italic(text);
+    else return `§o${text}§r`;
+  },
+
+  toConsole(text: string): string {
+    colors.forEach((color) => {
+      text = text.replace(new RegExp(color.mc, "g"), color.console);
     });
 
-    return text
+    return text;
+  },
+
+  toMinecraft(text: string): string | any {
+    colors.forEach((color) => {
+      text = text.replace(new RegExp(color.console, "g"), color.mc);
+    });
+
+    return text;
   },
 };
 
@@ -110,6 +120,9 @@ const colors = [
   { mc: "§d", console: `\x1b[95m` },
   { mc: "§e", console: `\x1b[93m` },
   { mc: "§f", console: `\x1b[97m` },
+  { mc: "§l", console: `\x1b[1m` },
+  { mc: "§0", console: `\x1b[3m` },
+  { mc: "§r", console: `\x1b[0m` },
 ];
 
 export default Colors;

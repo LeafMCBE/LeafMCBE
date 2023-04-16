@@ -3,3 +3,9 @@ Server:
   port: 19132
   motd: "Dedicated LeafMCBE Server"
   version: 1.19.63
+  max_players: 5
+
+LeafMCBE:
+  Logger:
+    debug: false
+    showDate: true

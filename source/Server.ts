@@ -12,20 +12,16 @@ import PacketSpawn from "./packets/handlers/PacketSpawn";
 import PacketText from "./packets/handlers/PacketText";
 import PacketClose from "./packets/handlers/PacketClose";
 import PacketJoin from "./packets/handlers/PacketJoin";
+import PluginManager from "./api/plugins/Manager";
+import Configuration from "./types/Configuration";
+import Loggers from "./types/Logger";
 
 class Server {
-  public loggers: { srv: Logger; chat: Logger };
-  public config: {
-    Server: {
-      version: string;
-      host: string;
-      max_players: number;
-      motd: string;
-      port: number;
-    };
-  };
+  public loggers: Loggers;
+  public config: Configuration;
   private srv: Protocol.Server;
   public readonly players: Player[] = [];
+  public readonly plugins = new PluginManager();
 
   constructor() {
     this.start();
@@ -43,7 +39,7 @@ class Server {
   }
 
   private async startSrv() {
-    new Promise<void>((res) => {
+    new Promise<void>(async (res) => {
       const srv = Protocol.createServer({
         host: this.config.Server.host,
         port: this.config.Server.port,
@@ -52,7 +48,7 @@ class Server {
           motd: String(this.config.Server.motd),
         },
         offline: false,
-        maxPlayers: this.config.Server.max_players,
+        maxPlayers: this.config.Server.max_players || 3,
         version: this.config.Server.version,
         advertisementFn() {
           const ad = new Protocol.ServerAdvertisement();
@@ -64,6 +60,8 @@ class Server {
 
       launch(this);
       this.handle();
+      await this.plugins.do("onEnable", null);
+
       res();
     });
   }

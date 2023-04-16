@@ -5,13 +5,15 @@ import Colors from "../../utils/Colors";
 
 const PacketClose = (server: Server, client: Client) => {
   if (!client) return;
-
   const player = new Player(client);
-  server.broadcast(`[${Colors.red("-")}] ${player.username}`);
+  const maybe = () =>
+    server.broadcast(`[${Colors.red("-")}] ${player.username}`);
 
   delete server.players[
     server.players.findIndex((v) => v.username === player.username)
   ];
+
+  server.plugins.do("onPlayerLeft", maybe, player);
 };
 
 export default PacketClose;

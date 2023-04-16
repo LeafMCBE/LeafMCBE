@@ -5,8 +5,8 @@
   "main": "start.ts",
   "scripts": {
     "start": "node --loader ts-node/esm .",
-    "start:dev": "nodemon .",
-    "start:prod": "npm run build && node .",
+    "dev": "nodemon .",
+    "production": "npm run build && node .",
     "build": "tsc"
   },
   "repository": {
@@ -35,6 +35,7 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
+    "@leaf/plugins": "file:source/packages/plugins",
     "@types/figlet": "^1.5.5",
     "bedrock-protocol": "^3.26.0",
     "figlet": "^1.6.0",

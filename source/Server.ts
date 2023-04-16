@@ -15,6 +15,8 @@ import PacketJoin from "./packets/handlers/PacketJoin";
 import PluginManager from "./api/plugins/Manager";
 import Configuration from "./types/Configuration";
 import Loggers from "./types/Logger";
+import CommandsManager from "./api/commands/Manager";
+import PacketCmdReq from "./packets/handlers/PacketCommandRequest";
 
 class Server {
   public loggers: Loggers;
@@ -22,6 +24,7 @@ class Server {
   private srv: Protocol.Server;
   public readonly players: Player[] = [];
   public readonly plugins = new PluginManager();
+  public readonly commands = new CommandsManager();
 
   constructor() {
     this.start();
@@ -84,6 +87,9 @@ class Server {
     switch (packet.data.name) {
       case "text":
         PacketText(this, client, packet);
+        break;
+      case "command_request":
+        PacketCmdReq(this, client, packet);
         break;
     }
   }

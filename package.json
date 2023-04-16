@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node --loader ts-node/esm .",
     "dev": "nodemon .",
-    "production": "npm run build && node .",
+    "production": "npm run build && node build/start.js",
+    "test": "npm run build && node build/test.js",
     "build": "tsc"
   },
   "repository": {

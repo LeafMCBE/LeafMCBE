@@ -28,6 +28,7 @@
   "homepage": "https://github.com/LeafMCBE/LeafMCBE#readme",
   "devDependencies": {
     "@types/node": "^18.15.11",
+    "@types/figlet": "^1.5.5",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
     "eslint": "^8.38.0",
@@ -36,8 +37,6 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "@leaf/plugins": "file:source/packages/plugins",
-    "@types/figlet": "^1.5.5",
     "bedrock-protocol": "^3.26.0",
     "figlet": "^1.6.0",
     "yaml": "^2.2.1"

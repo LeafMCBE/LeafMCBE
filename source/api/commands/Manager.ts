@@ -4,7 +4,6 @@ import { Client } from "bedrock-protocol";
 import Player from "../Player";
 import Colors from "../../utils/Colors";
 import Logger from "../../console/Logger";
-import server from "../../../start";
 
 class CommandsManager {
   private readonly commands: Command[] = [];
@@ -16,7 +15,7 @@ class CommandsManager {
   private async start() {
     const files = await readdir("./source/commands");
     for (const file of files) {
-      const cmd = require(`../../commands/${file}`).default;
+      const cmd = require(`../../commands/${file.replace('.ts','')}`).default;
 
       this.commands.push(new cmd());
     }
@@ -34,14 +33,16 @@ class CommandsManager {
         if (max != -1 && parameters.length > max)
           return logger.error(
             Colors.red(
-              `Syntax Error: Maximum Arguments is ${max} but received ${parameters.length}`
+              `Syntax Error: Maximum Arguments is ${max} but received ${parameters.length}`,
+              true
             )
           );
 
         if (min > parameters.length)
           return logger.error(
             Colors.red(
-              `Syntax Error: Minimum Arguments is ${min} but received ${parameters.length}`
+              `Syntax Error: Minimum Arguments is ${min} but received ${parameters.length}`,
+              true
             )
           );
 
@@ -51,7 +52,10 @@ class CommandsManager {
 
     if (!did)
       logger.error(
-        Colors.red(`Unknown command. Please check /help for more information`)
+        Colors.red(
+          `Unknown command. Please check /help for more information`,
+          true
+        )
       );
   }
 
@@ -86,6 +90,10 @@ class CommandsManager {
       player.send(
         Colors.red(`Unknown command. Please check /help for more information`)
       );
+  }
+
+  add(cmd: Command) {
+    this.commands.push(cmd);
   }
 }
 

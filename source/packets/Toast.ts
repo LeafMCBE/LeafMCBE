@@ -4,23 +4,28 @@ class Toast {
   private message: string;
   private title: string;
 
-  setTitle(title: string) {
+  setTitle(title: string): Toast {
     this.title = title;
+
+    return this;
   }
 
-  setMessage(message: string) {
+  setMessage(message: string): Toast {
     this.message = message;
+
+    return this;
   }
 
-  execute(client: Client) {
-    const message = this.message;
-    const title = this.title;
+  execute(client: Client): Toast {
+    const { message, title } = this;
 
     if (message && title)
       client.queue("toast_request", {
         title,
         message,
       });
+
+    return this;
   }
 }
 

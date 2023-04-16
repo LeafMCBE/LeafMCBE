@@ -18,14 +18,14 @@ class CommandSay extends Command {
         ],
         {
           min: 1,
-          max: 1,
+          max: -1,
         },
       ],
     });
   }
 
   run(player: Player | null, parameters: string[]): void {
-    const message = parameters[0];
+    const message = parameters.join(" ");
 
     this.api.getServer().broadcast(Colors.yellow(`[Server] ${message}`));
   }

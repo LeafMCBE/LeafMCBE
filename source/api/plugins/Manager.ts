@@ -17,6 +17,7 @@ class PluginManager {
   }
 
   async do(event: string, falseDo: () => void, ...parameters: any) {
+    let did = false;
     for await (const plu of this.plugins) {
       if (plu[event]) {
         const para = Object.assign({}, parameters);
@@ -24,8 +25,11 @@ class PluginManager {
         if (v) {
           if (falseDo) falseDo();
         }
+        did = true;
       }
     }
+
+    if (!did) falseDo();
   }
 }
 

@@ -94,7 +94,7 @@ const Colors = {
     return text;
   },
 
-  toMinecraft(text: string): string | any {
+  toMinecraft(text: string): string {
     colors.forEach((color) => {
       text = text.replace(new RegExp(color.console, "g"), color.mc);
     });

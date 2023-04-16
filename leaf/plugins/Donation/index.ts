@@ -25,7 +25,7 @@ class Donation extends Plugin {
 
   onPlayerJoin(options: PluginOnPlayerBase): void {
     this.texts.forEach((t) => {
-      options[0].send(Colors.toMinecraft(t));
+      options[0].send(t);
     });
   }
 }

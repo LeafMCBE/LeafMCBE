@@ -17,6 +17,7 @@ import Configuration from "./types/Configuration";
 import Loggers from "./types/Logger";
 import CommandsManager from "./api/commands/Manager";
 import PacketCmdReq from "./packets/handlers/PacketCommandRequest";
+import CCS from "./api/commands/Console";
 
 class Server {
   public loggers: Loggers;
@@ -64,6 +65,7 @@ class Server {
       launch(this);
       this.handle();
       await this.plugins.do("onEnable", null);
+      await CCS.prototype.start();
 
       res();
     });

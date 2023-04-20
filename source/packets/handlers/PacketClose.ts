@@ -7,7 +7,7 @@ const PacketClose = (server: Server, client: Client) => {
   if (!client) return;
   const player = new Player(client);
   const maybe = () =>
-    server.broadcast(`[${Colors.red("-")}] ${player.username}`);
+    server.broadcast(Colors.yellow(`${player.username} left`));
 
   delete server.players[
     server.players.findIndex((v) => v.username === player.username)

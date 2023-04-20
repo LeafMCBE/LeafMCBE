@@ -15,7 +15,7 @@ class CommandsManager {
   private async start() {
     const files = await readdir("./source/commands");
     for (const file of files) {
-      const cmd = require(`../../commands/${file.replace('.ts','')}`).default;
+      const cmd = require(`../../commands/${file.replace(".ts", "")}`).default;
 
       this.commands.push(new cmd());
     }
@@ -94,6 +94,10 @@ class CommandsManager {
 
   add(cmd: Command) {
     this.commands.push(cmd);
+  }
+
+  getAll(): Command[] {
+    return this.commands;
   }
 }
 

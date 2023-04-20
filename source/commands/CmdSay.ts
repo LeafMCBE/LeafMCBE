@@ -24,7 +24,7 @@ class CommandSay extends Command {
     });
   }
 
-  run(player: Player | null, parameters: string[]): void {
+  run(_player: Player | null, parameters: string[]): void {
     const message = parameters.join(" ");
 
     this.api.getServer().broadcast(Colors.yellow(`[Server] ${message}`));

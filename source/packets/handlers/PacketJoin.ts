@@ -2,6 +2,7 @@ import { Client } from "bedrock-protocol";
 import Server from "../../Server";
 import Player from "../../api/Player";
 import { readFile } from "fs/promises";
+import AvailableCommands from "../request/AvailableCommands";
 
 const PacketJoin = (server: Server, client: Client) => {
   if (!client) return;
@@ -77,7 +78,7 @@ const PacketJoin = (server: Server, client: Client) => {
       select_slot: true,
     });
     client.queue("crafting_data", await get("crafting_data"));
-    client.queue("available_commands", await get("available_commands"));
+    client.queue("available_commands", AvailableCommands(server));
     client.queue("chunk_radius_update", { chunk_radius: 1 });
     client.queue("game_rules_changed", await get("game_rules_changed"));
     client.queue("respawn", await get("respawn"));

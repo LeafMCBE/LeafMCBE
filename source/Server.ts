@@ -44,6 +44,7 @@ class Server {
 
   private async startSrv() {
     new Promise<void>(async (res) => {
+      // @ts-ignore
       const srv = Protocol.createServer({
         host: this.config.Server.host,
         port: this.config.Server.port,
@@ -54,11 +55,6 @@ class Server {
         offline: false,
         maxPlayers: this.config.Server.max_players || 3,
         version: this.config.Server.version,
-        advertisementFn() {
-          const ad = new Protocol.ServerAdvertisement();
-
-          return ad;
-        },
       });
       this.srv = srv;
 

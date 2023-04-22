@@ -1,5 +1,6 @@
 import { createInterface, Interface } from "readline/promises";
 import server from "../../../start";
+import { promisify } from "node:util";
 
 class CCS {
   private rl: Interface;
@@ -28,6 +29,24 @@ class CCS {
 
     this.rl.on("close", () => {
       process.exit(0);
+    });
+
+    const backup = {
+      info: console.info,
+      error: console.error,
+      warn: console.warn,
+    };
+
+    ["info", "error", "warn"].forEach((e) => {
+      console[e] = async (text: string) => {
+        this.rl.setPrompt("");
+        this.rl.prompt(false);
+
+        backup[e](text);
+
+        this.rl.setPrompt("> ");
+        this.rl.prompt();
+      };
     });
 
     this.rl.prompt();

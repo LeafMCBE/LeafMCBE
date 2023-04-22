@@ -3,28 +3,32 @@ import API from "./API";
 import Server from "../../Server";
 import Logger from "../../console/Logger";
 
+export enum CommandArgumentOptionType {
+  Integer = "int",
+  Flat = "float",
+  Value = "value",
+  WildcardInteger = "wildcard_int",
+  WildcardTarget = "wildcard_target",
+  Operator = "operator",
+  CommandOperator = "command_operator",
+  Target = "target",
+  FilePath = "file_path",
+  IntegerRange = "integer_range",
+  Equipment = "equipment_slots",
+  String = "string",
+  BlockPosition = "block_position",
+  Position = "position",
+  Message = "message",
+  RawText = "raw_text",
+  Json = "json",
+  Object = "json",
+  BlockStates = "block_states",
+  Command = "command",
+}
+
 export interface CommandArgumentOptions {
   name: string;
-  type:
-    | "int"
-    | "float"
-    | "value"
-    | "wildcard_int"
-    | "wildcard_target"
-    | "operator"
-    | "command_operator"
-    | "target"
-    | "file_path"
-    | "integer_range"
-    | "equipment_slots"
-    | "string"
-    | "block_position"
-    | "position"
-    | "message"
-    | "raw_text"
-    | "json"
-    | "block_states"
-    | "command";
+  type: CommandArgumentOptionType;
   optional?: boolean;
 }
 

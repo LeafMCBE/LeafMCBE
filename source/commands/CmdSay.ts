@@ -1,5 +1,5 @@
 import Player from "../api/Player";
-import { Command } from "../api/commands/Base";
+import { Command, CommandArgumentOptionType } from "../api/commands/Base";
 import Colors from "../utils/Colors";
 
 class CommandSay extends Command {
@@ -12,7 +12,7 @@ class CommandSay extends Command {
         [
           {
             name: "message",
-            type: "string",
+            type: CommandArgumentOptionType.String,
             optional: false,
           },
         ],

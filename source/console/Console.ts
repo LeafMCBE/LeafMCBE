@@ -1,6 +1,5 @@
 import { createInterface, Interface } from "readline/promises";
-import server from "../../../start";
-import { promisify } from "node:util";
+import server from "../../start";
 
 class CCS {
   private rl: Interface;
@@ -8,9 +7,11 @@ class CCS {
   async start() {
     this.rl = createInterface({
       input: process.stdin,
-      output: process.stdout,
-      prompt: "> ",
+      output: process.stderr,
     });
+    const showPrompt = server.config.LeafMCBE.Terminal.showPrompt;
+
+    if (showPrompt) this.rl.setPrompt("> ");
 
     this.rl.on("line", (i) => {
       const raw = i.split(" ");
@@ -24,7 +25,7 @@ class CCS {
       };
 
       server.commands.requestOnConsole(cmdName, parameters());
-      this.rl.prompt();
+      if (showPrompt) this.rl.prompt();
     });
 
     this.rl.on("close", () => {
@@ -39,17 +40,21 @@ class CCS {
 
     ["info", "error", "warn"].forEach((e) => {
       console[e] = async (text: string) => {
-        this.rl.setPrompt("");
-        this.rl.prompt(false);
+        if (showPrompt) {
+          this.rl.setPrompt("");
+          this.rl.prompt(false);
+        }
 
         backup[e](text);
 
-        this.rl.setPrompt("> ");
-        this.rl.prompt();
+        if (showPrompt) {
+          this.rl.setPrompt("> ");
+          this.rl.prompt();
+        }
       };
     });
 
-    this.rl.prompt();
+    if (showPrompt) this.rl.prompt();
   }
 }
 

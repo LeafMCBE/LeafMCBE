@@ -6,6 +6,7 @@ Server:
   max_players: 5
 
 LeafMCBE:
-  Logger:
+  Terminal:
     debug: false
     showDate: true
+    showPrompt: true

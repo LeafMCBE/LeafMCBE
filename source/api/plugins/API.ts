@@ -8,8 +8,8 @@ const API = (options: PluginOptions) => {
     getLogger: () =>
       new Logger({
         name: options.name,
-        debug: server.config.LeafMCBE.Logger.debug,
-        showDate: server.config.LeafMCBE.Logger.showDate,
+        debug: server.config.LeafMCBE.Terminal.debug,
+        showDate: server.config.LeafMCBE.Terminal.showDate,
       }),
   };
 };

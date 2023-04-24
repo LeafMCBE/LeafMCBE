@@ -8,9 +8,10 @@ interface Configuration {
   };
 
   LeafMCBE: {
-    Logger: {
+    Terminal: {
       debug: boolean;
       showDate: boolean;
+      showPrompt: boolean;
     };
   };
 }

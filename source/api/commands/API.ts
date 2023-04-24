@@ -7,8 +7,8 @@ const API = () => {
     getLogger: () =>
       new Logger({
         name: "Command",
-        debug: server.config.LeafMCBE.Logger.debug,
-        showDate: server.config.LeafMCBE.Logger.showDate,
+        debug: server.config.LeafMCBE.Terminal.debug,
+        showDate: server.config.LeafMCBE.Terminal.showDate,
       }),
   };
 };

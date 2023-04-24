@@ -17,7 +17,7 @@ import Configuration from "./types/Configuration";
 import Loggers from "./types/Logger";
 import CommandsManager from "./api/commands/Manager";
 import PacketCmdReq from "./packets/handlers/PacketCommandRequest";
-import CCS from "./api/commands/Console";
+import CCS from "./console/Console";
 
 class Server {
   public loggers: Loggers;

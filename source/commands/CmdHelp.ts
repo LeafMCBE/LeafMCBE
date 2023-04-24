@@ -76,6 +76,8 @@ class CommandHelp extends Command {
         messages.forEach((m) => {
           player.send(m);
         });
+    } else {
+      // TODO: Implement this.
     }
   }
 }

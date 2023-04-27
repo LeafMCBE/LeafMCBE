@@ -87,7 +87,7 @@ const Colors = {
   },
 
   toConsole (text: string): string {
-    colors.forEach((color) => {
+    colors.forEach(color => {
       text = text.replace(new RegExp(color.mc, 'g'), color.console)
     })
 
@@ -95,7 +95,7 @@ const Colors = {
   },
 
   toMinecraft (text: string): string {
-    colors.forEach((color) => {
+    colors.forEach(color => {
       text = text.replace(new RegExp(color.console, 'g'), color.mc)
     })
 

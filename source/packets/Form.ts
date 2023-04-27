@@ -1,8 +1,8 @@
 import { Client } from 'bedrock-protocol'
 
 interface Button {
-  text: string;
-  image?: string;
+  text: string
+  image?: string
 }
 
 class Form {

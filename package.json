@@ -11,7 +11,7 @@
     "build": "tsc",
     "build:remove": "rimraf build",
     "build:lint": "eslint . --fix",
-    "build:format": "prettier-standard start.ts"
+    "build:format": "prettier-standard ."
   },
   "repository": {
     "type": "git",

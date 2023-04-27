@@ -13,7 +13,7 @@ class CCS {
 
     if (showPrompt) this.rl.setPrompt('> ')
 
-    this.rl.on('line', (i) => {
+    this.rl.on('line', i => {
       const raw = i.split(' ')
       const cmdName = raw[0].replace('/', '')
       const parameters = () => {
@@ -36,9 +36,9 @@ class CCS {
       info: console.info,
       error: console.error,
       warn: console.warn
-    };
+    }
 
-    ['info', 'error', 'warn'].forEach((e) => {
+    ;['info', 'error', 'warn'].forEach(e => {
       console[e] = async (text: string) => {
         if (showPrompt) {
           this.rl.setPrompt('')

@@ -12,7 +12,7 @@ const AvailableCommands = (server: Server): object => {
     enum_constraints: []
   }
 
-  server.commands.getAll().forEach((c) => {
+  server.commands.getAll().forEach(c => {
     base.command_data.push({
       name: c.options.name,
       description: c.options.description || 'No description provided',
@@ -20,7 +20,7 @@ const AvailableCommands = (server: Server): object => {
       permission_level: 0,
       alias: -1,
       overloads: [
-        c.options.arguments[0].map((obj) => {
+        c.options.arguments[0].map(obj => {
           return {
             parameter_name: obj.name,
             value_type: obj.type,
@@ -39,7 +39,7 @@ const AvailableCommands = (server: Server): object => {
     })
 
     if (c.options.aliases && c.options.aliases.length >= 1) {
-      c.options.aliases.forEach((name) => {
+      c.options.aliases.forEach(name => {
         base.command_data.push({
           name,
           description: c.options.description || 'No description provided',
@@ -47,7 +47,7 @@ const AvailableCommands = (server: Server): object => {
           permission_level: 0,
           alias: -1,
           overloads: [
-            c.options.arguments[0].map((obj) => {
+            c.options.arguments[0].map(obj => {
               return {
                 parameter_name: obj.name,
                 value_type: obj.type,

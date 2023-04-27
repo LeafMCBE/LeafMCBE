@@ -1,8 +1,14 @@
-import Logger from "../console/Logger";
+import Logger from '../console/Logger'
 
-interface Loggers {
-  srv: Logger;
-  chat: Logger;
+export interface Loggers {
+  srv: Logger
+  chat: Logger
 }
 
-export default Loggers;
+export interface LoggerOptions {
+  debug?: boolean
+  showDate?: boolean
+  name: string
+}
+
+export type LoggerLevel = 'info' | 'warn' | 'error' | 'debug'

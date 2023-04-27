@@ -1,22 +1,22 @@
-import Server from "../Server.js";
-import chalk from "chalk";
-import figlet from "figlet";
+import Server from '../Server.js'
+import chalk from 'chalk'
+import figlet from 'figlet'
 
 const launch = async (srv: Server) => {
-  const text = await figlet.textSync(`LeafMCBE`, {
-    font: "Big",
-    horizontalLayout: "fitted",
-    verticalLayout: "fitted",
+  const text = await figlet.textSync('LeafMCBE', {
+    font: 'Big',
+    horizontalLayout: 'fitted',
+    verticalLayout: 'fitted',
     width: 80,
-    whitespaceBreak: true,
-  });
+    whitespaceBreak: true
+  })
 
-  console.info(text);
+  console.log(text)
   srv.loggers.srv.info(
     `Starting LeafMCBE on Minecraft Bedrock ${chalk.bold(
       srv.config.Server.version
     )}`
-  );
-};
+  )
+}
 
-export default launch;
+export default launch

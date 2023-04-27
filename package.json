@@ -5,10 +5,13 @@
   "main": "start.ts",
   "scripts": {
     "start": "node --loader ts-node/esm .",
-    "dev": "nodemon .",
-    "production": "npm run build && node build/start.js",
-    "test": "npm run build && node build/test.js",
-    "build": "tsc"
+    "start:dev": "nodemon .",
+    "start:prod": "npm run build:remove && npm run build:lint && npm run build:format && npm run build && node build/start.js",
+    "test": "node --loader ts-node/esm test.ts",
+    "build": "tsc",
+    "build:remove": "rimraf build",
+    "build:lint": "eslint . --fix",
+    "build:format": "prettier-standard start.ts"
   },
   "repository": {
     "type": "git",
@@ -29,10 +32,15 @@
   "devDependencies": {
     "@types/figlet": "^1.5.5",
     "@types/node": "^18.15.11",
-    "@typescript-eslint/eslint-plugin": "^5.57.1",
-    "@typescript-eslint/parser": "^5.57.1",
-    "eslint": "^8.38.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "eslint": "^8.39.0",
+    "eslint-config-standard-with-typescript": "^34.0.1",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.7.0",
+    "eslint-plugin-promise": "^6.1.1",
     "nodemon": "^2.0.22",
+    "prettier-standard": "^16.4.1",
+    "rimraf": "^5.0.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
   },

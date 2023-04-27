@@ -1,34 +1,34 @@
-import Player from "../api/Player";
-import { Command, CommandArgumentOptionType } from "../api/commands/Base";
-import Colors from "../utils/Colors";
+import Player from '../api/Player'
+import { Command, CommandArgumentOptionType } from '../api/commands/Base'
+import Colors from '../utils/Colors'
 
 class CommandSay extends Command {
-  constructor() {
+  constructor () {
     super({
-      name: "say",
-      description: "Broadcast/Say a message",
-      aliases: ["broadcast"],
+      name: 'say',
+      description: 'Broadcast/Say a message',
+      aliases: ['broadcast'],
       arguments: [
         [
           {
-            name: "message",
+            name: 'message',
             type: CommandArgumentOptionType.String,
-            optional: false,
-          },
+            optional: false
+          }
         ],
         {
           min: 1,
-          max: -1,
-        },
-      ],
-    });
+          max: -1
+        }
+      ]
+    })
   }
 
-  run(_player: Player | null, parameters: string[]): void {
-    const message = parameters.join(" ");
+  run (_player: Player | null, parameters: string[]): void {
+    const message = parameters.join(' ')
 
-    this.api.getServer().broadcast(Colors.yellow(`[Server] ${message}`));
+    this.api.getServer().broadcast(Colors.yellow(`[Server] ${message}`))
   }
 }
 
-export default CommandSay;
+export default CommandSay

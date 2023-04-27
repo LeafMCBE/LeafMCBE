@@ -1,23 +1,24 @@
-import { Client } from "bedrock-protocol";
-import Server from "../../Server";
+import { Client } from 'bedrock-protocol'
+import Server from '../../Server'
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const PacketCmdReq = (server: Server, client: Client, packet: any) => {
-  var raw: string = packet.data.params.command;
-  var _ = raw.split(" ");
-  var cmdName = _[0].replace("/", "");
-  var __ = () => {
+  const raw: string = packet.data.params.command
+  const _ = raw.split(' ')
+  const cmdName = _[0].replace('/', '')
+  const __ = () => {
     if (_.length >= 1) {
-      return _.filter((_v, i) => i !== 0);
+      return _.filter((_v, i) => i !== 0)
     } else {
-      return [];
+      return []
     }
-  };
-  var args =
+  }
+  const args =
     __()
-      .join(" ")
-      .match(/(?:[^\s"]+|"[^"]*")+/g) || [];
+      .join(' ')
+      .match(/(?:[^\s"]+|"[^"]*")+/g) || []
 
-  server.commands.requestOnMinecraft(client, cmdName, args);
-};
+  server.commands.requestOnMinecraft(client, cmdName, args)
+}
 
-export default PacketCmdReq;
+export default PacketCmdReq

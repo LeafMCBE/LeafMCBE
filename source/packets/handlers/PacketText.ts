@@ -1,6 +1,7 @@
-import { Text, TextType } from "../Text";
-import Server from "../../Server";
-import Player from "../../api/Player";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Text, TextType } from '../Text'
+import Server from '../../Server'
+import Player from '../../api/Player'
 
 const PacketText = (server: Server, client: any, packet: any) => {
   const maybe = () => {
@@ -10,16 +11,16 @@ const PacketText = (server: Server, client: any, packet: any) => {
       )
       .setType(TextType.Chat)
       .setNeedsTranslation(false)
-      .setSourceName("")
-      .setPlatformChatId("")
-      .setXuid("");
+      .setSourceName('')
+      .setPlatformChatId('')
+      .setXuid('')
 
     for (const player of server.players) {
-      txt.execute(player.client);
+      txt.execute(player.client)
     }
-  };
+  }
 
-  server.plugins.do("onPlayerChat", maybe, new Player(client));
-};
+  server.plugins.do('onPlayerChat', maybe, new Player(client))
+}
 
-export default PacketText;
+export default PacketText

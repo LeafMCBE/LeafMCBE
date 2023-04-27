@@ -1,36 +1,38 @@
-import { readdir } from "fs/promises";
-import { Plugin } from "./Base";
+import { readdir } from 'fs/promises'
+import { Plugin } from './Base'
 
 class PluginManager {
-  public readonly plugins: Plugin[] = [];
+  public readonly plugins: Plugin[] = []
 
-  constructor() {
-    this.start();
+  constructor () {
+    this.start()
   }
 
-  private async start() {
-    const folders = await readdir("leaf/plugins");
+  private async start () {
+    const folders = await readdir('leaf/plugins')
     for (const folder of folders) {
-      const plugin = require(`../../../leaf/plugins/${folder}/index`).default;
-      this.plugins.push(new plugin());
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      const Plugin = require(`../../../leaf/plugins/${folder}/index`).default
+      this.plugins.push(new Plugin())
     }
   }
 
-  async do(event: string, falseDo: () => void, ...parameters: any) {
-    let did = false;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  async do (event: string, falseDo: () => void, ...parameters: any) {
+    let did = false
     for await (const plu of this.plugins) {
       if (plu[event]) {
-        const para = Object.assign({}, parameters);
-        const v = plu[event](para);
+        const para = Object.assign({}, parameters)
+        const v = plu[event](para)
         if (v) {
-          if (falseDo) falseDo();
+          if (falseDo) falseDo()
         }
-        did = true;
+        did = true
       }
     }
 
-    if (!did) falseDo();
+    if (!did) falseDo()
   }
 }
 
-export default PluginManager;
+export default PluginManager

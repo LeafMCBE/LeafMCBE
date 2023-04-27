@@ -1,16 +1,16 @@
-import server from "../../../start";
-import Logger from "../../console/Logger";
+import server from '../../../start'
+import Logger from '../../console/Logger'
 
 const API = () => {
   return {
     getServer: () => server,
     getLogger: () =>
       new Logger({
-        name: "Command",
+        name: 'Command',
         debug: server.config.LeafMCBE.Terminal.debug,
-        showDate: server.config.LeafMCBE.Terminal.showDate,
-      }),
-  };
-};
+        showDate: server.config.LeafMCBE.Terminal.showDate
+      })
+  }
+}
 
-export default API;
+export default API

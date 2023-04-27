@@ -1,5 +1,5 @@
-import "./start";
+import './start'
 
 setTimeout(() => {
-  process.exit(0);
-}, 10000);
+  process.exit(0)
+}, 10000)

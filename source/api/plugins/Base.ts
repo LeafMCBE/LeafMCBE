@@ -1,7 +1,7 @@
-import Server from "../../Server";
-import Logger from "../../console/Logger";
-import Player from "../Player";
-import API from "./API";
+import Server from '../../Server'
+import Logger from '../../console/Logger'
+import Player from '../Player'
+import API from './API'
 
 export interface PluginOptions {
   name: string;
@@ -22,11 +22,11 @@ export interface Plugin {
 }
 
 export class Plugin {
-  public readonly options: PluginOptions;
-  public readonly api: { getLogger: () => Logger; getServer: () => Server };
+  public readonly options: PluginOptions
+  public readonly api: { getLogger: () => Logger; getServer: () => Server }
 
-  constructor(options: PluginOptions) {
-    this.options = options;
-    this.api = API(options);
+  constructor (options: PluginOptions) {
+    this.options = options
+    this.api = API(options)
   }
 }

@@ -1,32 +1,33 @@
-import { Client } from "bedrock-protocol";
+import { Client } from 'bedrock-protocol'
 
 class Toast {
-  private message: string;
-  private title: string;
+  private message: string
+  private title: string
 
-  setTitle(title: string): Toast {
-    this.title = title;
+  setTitle (title: string): Toast {
+    this.title = title
 
-    return this;
+    return this
   }
 
-  setMessage(message: string): Toast {
-    this.message = message;
+  setMessage (message: string): Toast {
+    this.message = message
 
-    return this;
+    return this
   }
 
-  execute(client: Client): Toast {
-    const { message, title } = this;
+  execute (client: Client): Toast {
+    const { message, title } = this
 
-    if (message && title)
-      client.queue("toast_request", {
+    if (message && title) {
+      client.queue('toast_request', {
         title,
-        message,
-      });
+        message
+      })
+    }
 
-    return this;
+    return this
   }
 }
 
-export default Toast;
+export default Toast

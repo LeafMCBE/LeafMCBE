@@ -1,4 +1,4 @@
-import { Client } from "bedrock-protocol";
+import { Client } from 'bedrock-protocol'
 
 interface Button {
   text: string;
@@ -6,98 +6,98 @@ interface Button {
 }
 
 class Form {
-  private title: string;
-  private id: number;
-  private buttons: Button[] = [];
-  private contents = [];
+  private title: string
+  private id: number
+  private buttons: Button[] = []
+  private contents = []
 
-  setTitle(title: string): Form {
-    this.title = title;
+  setTitle (title: string): Form {
+    this.title = title
 
-    return this;
+    return this
   }
 
-  setId(id: number) {
-    this.id = id;
+  setId (id: number) {
+    this.id = id
 
-    return this;
+    return this
   }
 
-  addButton(btn: Button) {
-    this.buttons.push(btn);
+  addButton (btn: Button) {
+    this.buttons.push(btn)
 
-    return this;
+    return this
   }
 
-  setButtons(...btn: Button[]) {
-    this.buttons = btn;
+  setButtons (...btn: Button[]) {
+    this.buttons = btn
 
-    return this;
+    return this
   }
 
-  addInput(text: string, placeholder?: string) {
+  addInput (text: string, placeholder?: string) {
     this.contents.push({
-      type: "input",
+      type: 'input',
       text,
-      placeholder,
-    });
+      placeholder
+    })
 
-    return this;
+    return this
   }
 
-  addDropdown(text: string, ...options: string[]) {
+  addDropdown (text: string, ...options: string[]) {
     this.contents.push({
-      type: "dropdown",
+      type: 'dropdown',
       text,
-      options,
-    });
+      options
+    })
 
-    return this;
+    return this
   }
 
-  addLabel(text: string) {
+  addLabel (text: string) {
     this.contents.push({
-      type: "label",
-      text,
-    });
+      type: 'label',
+      text
+    })
 
-    return this;
+    return this
   }
 
-  addToggle(text: string) {
+  addToggle (text: string) {
     this.contents.push({
-      type: "toggle",
-      text,
-    });
+      type: 'toggle',
+      text
+    })
 
-    return this;
+    return this
   }
 
-  addSlider(text: string, min: number, max: number, step: number = 1) {
+  addSlider (text: string, min: number, max: number, step = 1) {
     this.contents.push({
-      type: "slider",
+      type: 'slider',
       text,
       min,
       max,
-      step,
-    });
+      step
+    })
 
-    return this;
+    return this
   }
 
-  execute(client: Client) {
-    client.queue("modal_form_request", {
+  execute (client: Client) {
+    client.queue('modal_form_request', {
       id: this.id,
       data: JSON.stringify({
-        type: "custom_form",
+        type: 'custom_form',
         title: this.title,
         content: this.contents,
-        buttons: this.buttons,
-      }),
-    });
+        buttons: this.buttons
+      })
+    })
 
-    return this;
+    return this
   }
 }
 
-export default Form;
+export default Form

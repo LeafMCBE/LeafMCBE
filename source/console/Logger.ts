@@ -1,31 +1,34 @@
-import { LoggerOptions, LoggerLevel } from '../types/Logger'
+import { LoggerLevel as Lvl } from '../types/Logger'
+import Colors from '../utils/Colors'
 
-class Logger {
-  private readonly options: LoggerOptions
-
-  constructor (options: LoggerOptions) {
-    this.options = options
+const logger = () => {
+  const colorize = (level: Lvl) => {
+    const obj = {
+      info: Colors.green('INFO', true),
+      warn: Colors.yellow('WARN', true),
+      error: Colors.red('ERROR', true),
+      debug: Colors.white('DEBUG', true)
+    }
+    return obj[level]
   }
 
-  public info (text: string) {
-    this.write(text, 'info')
-  }
+  ;['info', 'warn', 'error', 'debug'].forEach(type => {
+    const backup = console[type]
+    const d = new Date().toLocaleString().replace(',', '').toUpperCase()
 
-  public warn (text: string) {
-    this.write(text, 'warn')
-  }
-
-  public error (text: string) {
-    this.write(text, 'error')
-  }
-
-  public debug (text: string) {
-    if (this.options.debug) this.write(text, 'debug')
-  }
-
-  private write (text: string, lvl: LoggerLevel) {
-    console[lvl](text, this.options.name)
-  }
+    /**
+     * log something y'all.
+     * @param text as string
+     * @param group as string
+     */
+    console[type] = (text: string, group?: string) => {
+      if (group) {
+        backup(`[${d} ${colorize(type as Lvl)}] [${group}] ${text}`)
+      } else {
+        backup(`[${d} ${colorize(type as Lvl)}] ${text}`)
+      }
+    }
+  })
 }
 
-export default Logger
+export default logger

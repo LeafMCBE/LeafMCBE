@@ -1,19 +1,26 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { Client } from 'bedrock-protocol'
 import { Text, TextType } from '../packets/Text'
 
 class Player {
   public readonly username: string
   public readonly ip: string
-  public readonly client: any
+  public readonly client: Client
   public readonly kick: (reason: string) => void
   public readonly send: (message: string) => void
 
-  constructor (client: any) {
+  constructor (client: Client) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     this.username = client.getUserData().displayName
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     this.ip = client.connection.address
     this.client = client
 
     this.kick = (reason: string) => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       this.client.disconnect(reason || 'Kicked by CONSOLE')
     }
 

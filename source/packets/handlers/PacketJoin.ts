@@ -9,7 +9,7 @@ const PacketJoin = (server: Server, client: Client) => {
 
   const player = new Player(client)
   server.players.push(player)
-  server.loggers.srv.info(`${player.username}[${player.ip}] connected`)
+  console.info(`${player.username}[${player.ip}] connected`, 'Server')
 
   client.write('resource_packs_info', {
     must_accept: false,

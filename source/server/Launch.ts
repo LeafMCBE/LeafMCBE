@@ -12,10 +12,11 @@ const launch = async (srv: Server) => {
   })
 
   console.log(text)
-  srv.loggers.srv.info(
+  console.info(
     `Starting LeafMCBE on Minecraft Bedrock ${chalk.bold(
       srv.config.Server.version
-    )}`
+    )}`,
+    'Server'
   )
 }
 

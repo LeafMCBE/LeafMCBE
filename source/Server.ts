@@ -33,6 +33,7 @@ class Server {
 
   private async start() {
     await validate();
+    this.globalLog();
 
     this.loggers = {
       srv: new Logger({ name: "Server", showDate: true }),
@@ -90,6 +91,39 @@ class Server {
         PacketCmdReq(this, client, packet);
         break;
     }
+  }
+
+  private globalLog() {
+    type Lvl = "info" | "warn" | "error" | "debug";
+
+    const colorize = (level: Lvl) => {
+      const obj = {
+        info: Colors.green("INFO"),
+        warn: Colors.yellow("WARN"),
+        error: Colors.red("ERROR"),
+        debug: Colors.white("DEBUG"),
+      };
+      const a = "globalizing";
+      return obj[level];
+    };
+
+    ["info", "warn", "error", "debug"].forEach((type) => {
+      const backup = console[type];
+      const d = new Date().toLocaleString().replace(",", "").toUpperCase();
+
+      /**
+       * log something y'all.
+       * @param text as string
+       * @param group as string
+       */
+      console[type] = (text: string, group?: string) => {
+        if (group) {
+          backup(`[${d} ${colorize(type as Lvl)}] [${group}] ${text}`);
+        } else {
+          backup(`[${d} ${colorize(type as Lvl)}] ${text}`);
+        }
+      };
+    });
   }
 
   broadcast(message: string) {

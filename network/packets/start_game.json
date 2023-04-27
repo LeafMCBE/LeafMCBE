@@ -1,19 +1,19 @@
 {
-  "entity_id": "-4294967295",
+  "entity_id": "-8589934591",
   "runtime_entity_id": "1",
   "player_gamemode": "fallback",
   "player_position": {
-    "x": 0.5,
+    "x": 21.5,
     "y": 32769.62109375,
-    "z": 151.5
+    "z": 118.5
   },
   "rotation": {
     "x": 0,
     "z": 0
   },
   "seed": [
-    1982761330,
-    2857384344
+    3170002540,
+    1083938245
   ],
   "biome_type": 0,
   "biome_name": "plains",
@@ -22,13 +22,13 @@
   "world_gamemode": "survival",
   "difficulty": 1,
   "spawn_position": {
-    "x": 0,
+    "x": 21,
     "y": 32767,
-    "z": 151
+    "z": 118
   },
   "achievements_disabled": true,
   "editor_world": false,
-  "day_cycle_stop_time": 73,
+  "day_cycle_stop_time": 46,
   "edu_offer": 0,
   "edu_features_enabled": false,
   "edu_product_uuid": "",
@@ -37,8 +37,8 @@
   "has_confirmed_platform_locked_content": false,
   "is_multiplayer": true,
   "broadcast_to_lan": true,
-  "xbox_live_broadcast_mode": 0,
-  "platform_broadcast_mode": 0,
+  "xbox_live_broadcast_mode": 6,
+  "platform_broadcast_mode": 6,
   "enable_commands": true,
   "is_texturepacks_required": false,
   "gamerules": [
@@ -259,9 +259,9 @@
   "server_authoritative_block_breaking": false,
   "current_tick": [
     0,
-    73
+    46
   ],
-  "enchantment_seed": 1933041152,
+  "enchantment_seed": 2127007527,
   "block_properties": [],
   "itemstates": [
     {
@@ -6115,7 +6115,7 @@
       "component_based": false
     }
   ],
-  "multiplayer_correlation_id": "e476f9ff-058b-4ef0-86a6-4f6e1d5909d9",
+  "multiplayer_correlation_id": "d311dca4-7bb5-424c-b70b-cfeac898bc7f",
   "server_authoritative_inventory": true,
   "engine": "1.19.63",
   "property_data": {

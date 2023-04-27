@@ -17,16 +17,18 @@ class Donation extends Plugin {
     ]
   }
 
-  onEnable (): void {
-    this.texts.forEach((t) => {
+  onEnable () {
+    this.texts.forEach(t => {
       this.api.getLogger().info(Colors.toConsole(t))
     })
   }
 
-  onPlayerJoin (options: PluginOnPlayerBase): void {
-    this.texts.forEach((t) => {
+  onPlayerJoin (options: PluginOnPlayerBase): boolean {
+    this.texts.forEach(t => {
       options[0].send(t)
     })
+
+    return true
   }
 }
 

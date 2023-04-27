@@ -1,7 +1,6 @@
 import Player from '../Player'
 import API from './API'
 import Server from '../../Server'
-import Logger from '../../console/Logger'
 
 export enum CommandArgumentOptionType {
   Integer = 'int',

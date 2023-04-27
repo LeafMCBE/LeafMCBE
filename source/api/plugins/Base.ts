@@ -1,5 +1,4 @@
 import Server from '../../Server'
-import Logger from '../../console/Logger'
 import Player from '../Player'
 import API from './API'
 

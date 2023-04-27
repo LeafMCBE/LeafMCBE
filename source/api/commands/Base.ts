@@ -47,9 +47,14 @@ export interface CommandOptions {
 
 export abstract class Command {
   public readonly options: CommandOptions
-  public readonly api: {
+  api: {
     getServer: () => Server
-    getLogger: () => Logger
+    getLogger: () => {
+      info: (text: string) => void
+      warn: (text: string) => void
+      error: (text: string) => void
+      debug: (text: string) => void
+    }
   }
 
   constructor (options: CommandOptions) {

@@ -24,7 +24,6 @@ class CommandsManager {
 
   requestOnConsole (cmd: string, parameters: string[]) {
     let did = false
-    const logger = new Logger({ name: 'Command' })
 
     for (const command of this.commands) {
       if (cmd === command.options.name) {
@@ -32,20 +31,22 @@ class CommandsManager {
         const { max, min } = command.options.arguments[1]
 
         if (max !== -1 && parameters.length > max) {
-          return logger.error(
+          return console.error(
             Colors.red(
               `Syntax Error: Maximum Arguments is ${max} but received ${parameters.length}`,
               true
-            )
+            ),
+            'Command'
           )
         }
 
         if (min > parameters.length) {
-          return logger.error(
+          return console.error(
             Colors.red(
               `Syntax Error: Minimum Arguments is ${min} but received ${parameters.length}`,
               true
-            )
+            ),
+            'Command'
           )
         }
 
@@ -54,11 +55,12 @@ class CommandsManager {
     }
 
     if (!did) {
-      logger.error(
+      console.error(
         Colors.red(
           'Unknown command. Please check /help for more information',
           true
-        )
+        ),
+        'Command'
       )
     }
   }

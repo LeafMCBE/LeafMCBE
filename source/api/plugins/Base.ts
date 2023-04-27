@@ -4,26 +4,34 @@ import Player from '../Player'
 import API from './API'
 
 export interface PluginOptions {
-  name: string;
-  version: [number, number, number];
-  serverVersion: [number, number, number];
+  name: string
+  version: [number, number, number]
+  serverVersion: [number, number, number]
 }
 
 export interface PluginOnPlayerBase {
-  0: Player;
+  0: Player
 }
 
 export interface Plugin {
-  onEnable(): void;
-  onDisable(): void;
-  onPlayerJoin(options: PluginOnPlayerBase): void;
-  onPlayerLeft(options: PluginOnPlayerBase): void;
-  onPlayerChat(options: PluginOnPlayerBase): void;
+  onEnable(): void
+  onDisable(): void
+  onPlayerJoin(options: PluginOnPlayerBase): void
+  onPlayerLeft(options: PluginOnPlayerBase): void
+  onPlayerChat(options: PluginOnPlayerBase): void
 }
 
 export class Plugin {
   public readonly options: PluginOptions
-  public readonly api: { getLogger: () => Logger; getServer: () => Server }
+  api: {
+    getServer: () => Server
+    getLogger: () => {
+      info: (text: string) => void
+      warn: (text: string) => void
+      error: (text: string) => void
+      debug: (text: string) => void
+    }
+  }
 
   constructor (options: PluginOptions) {
     this.options = options

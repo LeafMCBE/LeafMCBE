@@ -12,32 +12,18 @@ const logger = () => {
     return obj[level]
   }
 
-  const backup = {
-    info: console.info,
-    warn: console.warn,
-    error: console.error,
-    debug: console.debug
-  }
+  ;['info', 'warn', 'error', 'debug'].forEach(type => {
+    const backup = console[type]
+    const d = new Date().toLocaleString().replace(',', '').toUpperCase()
 
-  console.info = (text: string, group: string) => {
-    const d = new Date().toLocaleString().toUpperCase().replace(',', '')
-    backup.info(`[${d} ${colorize('info')}] [${group}] ${text}`)
-  }
-
-  console.warn = (text: string, group: string) => {
-    const d = new Date().toLocaleString().toUpperCase().replace(',', '')
-    backup.warn(`[${d} ${colorize('warn')}] [${group}] ${text}`)
-  }
-
-  console.error = (text: string, group: string) => {
-    const d = new Date().toLocaleString().toUpperCase().replace(',', '')
-    backup.error(`[${d} ${colorize('error')}] [${group}] ${text}`)
-  }
-
-  console.debug = (text: string, group: string) => {
-    const d = new Date().toLocaleString().toUpperCase().replace(',', '')
-    backup.debug(`[${d} ${colorize('debug')}] [${group}] ${text}`)
-  }
+    console[type] = (text: string, group: string) => {
+      if (group) {
+        backup(`[${d} ${colorize(type as Lvl)}] [${group}] ${text}`)
+      } else {
+        backup(`[${d} ${colorize(type as Lvl)}] ${text}`)
+      }
+    }
+  })
 }
 
 export default logger

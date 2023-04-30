@@ -38,14 +38,15 @@ class CCS {
       warn: console.warn
     }
 
-    ;['info', 'error', 'warn'].forEach(e => {
-      console[e] = async (text: string) => {
+    ;['info', 'warn', 'error', 'debug'].forEach(type => {
+      const backup = console[type]
+      console[type] = (text: string, group: string) => {
         if (showPrompt) {
           this.rl.setPrompt('')
           this.rl.prompt(false)
         }
 
-        backup[e](text)
+        backup(text, group)
 
         if (showPrompt) {
           this.rl.setPrompt('> ')

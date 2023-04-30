@@ -1,4 +1,4 @@
-import { Client } from 'bedrock-protocol'
+import { Player as Client } from 'bedrock-protocol'
 import Server from '../../Server'
 import Player from '../../api/Player'
 import Colors from '../../utils/Colors'

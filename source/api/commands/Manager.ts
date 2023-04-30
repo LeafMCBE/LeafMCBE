@@ -1,6 +1,6 @@
 import { readdir } from 'fs/promises'
 import { Command } from './Base'
-import { Client } from 'bedrock-protocol'
+import { Player as Client } from 'bedrock-protocol'
 import Player from '../Player'
 import Colors from '../../utils/Colors'
 

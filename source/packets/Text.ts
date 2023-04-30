@@ -1,4 +1,4 @@
-import { Client } from 'bedrock-protocol'
+import { Player as Client } from 'bedrock-protocol'
 
 export enum TextType {
   Raw = 'raw',

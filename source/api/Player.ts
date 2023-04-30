@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Client } from 'bedrock-protocol'
+import { Player as Client } from 'bedrock-protocol'
 import { Text, TextType } from '../packets/Text'
 
 class Player {

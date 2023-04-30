@@ -1,4 +1,4 @@
-import { Client } from 'bedrock-protocol'
+import { Player as Client } from 'bedrock-protocol'
 import Server from '../../Server'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

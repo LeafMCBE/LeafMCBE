@@ -6,7 +6,7 @@ import Player from './api/Player'
 
 import { parse } from 'yaml'
 import { readFile } from 'fs/promises'
-import Protocol from 'bedrock-protocol'
+import Protocol, { Version } from 'bedrock-protocol'
 import { Text, TextType } from './packets/Text'
 import Colors from './utils/Colors'
 import PacketSpawn from './packets/handlers/PacketSpawn'
@@ -51,7 +51,7 @@ class Server {
         },
         offline: false,
         maxPlayers: this.config.Server.max_players || 3,
-        version: this.config.Server.version
+        version: this.config.Server.version as Version
       })
       this.srv = srv
 
@@ -68,7 +68,7 @@ class Server {
   }
 
   private async handle () {
-    this.srv.on('connect', (client: Protocol.Client) => {
+    this.srv.on('connect', (client: Protocol.Player) => {
       client.on('join', () => PacketJoin(this, client))
       client.on('spawn', () => PacketSpawn(this, client))
       client.on('close', () => PacketClose(this, client))
@@ -81,7 +81,7 @@ class Server {
     })
   }
 
-  private handlePkt (client: Protocol.Client, packet: any) {
+  private handlePkt (client: Protocol.Player, packet: any) {
     switch (packet.data.name) {
       case 'text':
         PacketText(this, client, packet)

@@ -1,5 +1,6 @@
 import { LoggerLevel as Lvl } from '../types/Logger'
 import Colors from '../utils/Colors'
+import server from '../../start'
 
 const logger = () => {
   const colorize = (level: Lvl) => {
@@ -17,10 +18,22 @@ const logger = () => {
     const d = new Date().toLocaleString().replace(',', '').toUpperCase()
 
     console[type] = (text: string, group: string) => {
-      if (group) {
-        backup(`[${d} ${colorize(type as Lvl)}] [${group}] ${text}`)
+      if (server.config.LeafMCBE.Terminal.showDate) {
+        if (group) {
+          if (server.config.LeafMCBE.Terminal.showGroup) {
+            backup(`[${d} ${colorize(type as Lvl)}] [${group}] ${text}`)
+          } else backup(`[${d} ${colorize(type as Lvl)}] ${text}`)
+        } else {
+          backup(`[${d} ${colorize(type as Lvl)}] ${text}`)
+        }
       } else {
-        backup(`[${d} ${colorize(type as Lvl)}] ${text}`)
+        if (group) {
+          if (server.config.LeafMCBE.Terminal.showGroup) {
+            backup(`[${colorize(type as Lvl)} | ${group}] ${text}`)
+          } else backup(`${colorize(type as Lvl)} | ${text}`)
+        } else {
+          backup(`${colorize(type as Lvl)} | ${text}`)
+        }
       }
     }
   })

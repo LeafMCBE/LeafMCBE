@@ -5,12 +5,14 @@ interface Configuration {
     motd: string
     version: string
     max_players: number
+    offline: boolean
   }
 
   LeafMCBE: {
     Terminal: {
       debug: boolean
       showDate: boolean
+      showGroup: boolean
       showPrompt: boolean
     }
   }

@@ -25,31 +25,41 @@ class CommandsManager {
     let did = false
 
     for (const command of this.commands) {
-      if (cmd === command.options.name) {
+      if (
+        cmd === command.options.name ||
+        (command.options.aliases &&
+          command.options.aliases.includes(cmd.toLowerCase()))
+      ) {
         did = true
-        const { max, min } = command.options.arguments[1]
+        if (
+          command.options.arguments &&
+          command.options.arguments[0] &&
+          command.options.arguments[1]
+        ) {
+          const { max, min } = command.options.arguments[1]
 
-        if (max !== -1 && parameters.length > max) {
-          return console.error(
-            Colors.red(
-              `Syntax Error: Maximum Arguments is ${max} but received ${parameters.length}`,
-              true
-            ),
-            'Command'
-          )
+          if (max !== -1 && parameters.length > max) {
+            return console.error(
+              Colors.red(
+                `Syntax Error: Maximum Arguments is ${max} but received ${parameters.length}`,
+                true
+              ),
+              'Command'
+            )
+          }
+
+          if (min > parameters.length) {
+            return console.error(
+              Colors.red(
+                `Syntax Error: Minimum Arguments is ${min} but received ${parameters.length}`,
+                true
+              ),
+              'Command'
+            )
+          }
+
+          command.run(null, parameters)
         }
-
-        if (min > parameters.length) {
-          return console.error(
-            Colors.red(
-              `Syntax Error: Minimum Arguments is ${min} but received ${parameters.length}`,
-              true
-            ),
-            'Command'
-          )
-        }
-
-        command.run(null, parameters)
       }
     }
 
@@ -69,7 +79,11 @@ class CommandsManager {
     let did = false
 
     for (const command of this.commands) {
-      if (cmd === command.options.name) {
+      if (
+        cmd === command.options.name ||
+        (command.options.aliases &&
+          command.options.aliases.includes(cmd.toLowerCase()))
+      ) {
         did = true
         const { max, min } = command.options.arguments[1]
 

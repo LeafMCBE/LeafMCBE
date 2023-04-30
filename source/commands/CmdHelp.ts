@@ -12,7 +12,7 @@ class CommandHelp extends Command {
         [
           {
             name: 'cmdName',
-            type: CommandArgumentOptionType.Command,
+            type: CommandArgumentOptionType.CommandOperator,
             optional: false
           }
         ],
@@ -35,6 +35,7 @@ class CommandHelp extends Command {
       for (const cmd of cmds) {
         const usage = (): string => {
           function usage () {
+            if (!cmd.options.arguments) return []
             if (cmd.options.arguments[0].length >= 1) {
               const aliases = []
               cmd.options.arguments[0].forEach(c => {

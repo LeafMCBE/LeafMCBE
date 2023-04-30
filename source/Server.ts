@@ -107,6 +107,14 @@ class Server {
 
     console.info(Colors.toConsole(message), 'Chat')
   }
+
+  close (reason?: string) {
+    this.players.forEach(player => {
+      player.kick(reason || 'Server closed')
+    })
+
+    this.srv.close(reason || 'Server closed')
+  }
 }
 
 export default Server

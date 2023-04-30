@@ -1,0 +1,3 @@
+[submodule "packages/protocol"]
+	path = packages/protocol
+	url = https://github.com/LeafMCBE/Protocol.git

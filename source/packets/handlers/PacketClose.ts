@@ -4,6 +4,8 @@ import Player from '../../api/Player'
 import Colors from '../../utils/Colors'
 
 const PacketClose = (server: Server, client: Client) => {
+  if (!client.userData) return
+
   const player = new Player(client)
   delete server.players[
     server.players.findIndex(v => v.username === player.username)

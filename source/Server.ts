@@ -32,9 +32,9 @@ class Server {
 
   private async start () {
     await validate()
-    await logger()
-
     this.config = parse(await readFile('./leaf/config.yml', 'utf-8'))
+    await logger(this.config)
+
     await this.startSrv()
   }
 

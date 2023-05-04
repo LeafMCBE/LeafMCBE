@@ -1,3 +1,6 @@
+process.env.DEBUG = 'minecraft-protocol'
+
+// eslint-disable-next-line import/first
 import Server from './source/Server'
 
 if (
@@ -11,4 +14,6 @@ if (
   process.exit(1)
 }
 
-export default new Server()
+const srv = new Server()
+
+export default srv

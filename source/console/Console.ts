@@ -6,6 +6,8 @@ class CCS {
 
   async start () {
     this.rl = createInterface({
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       input: process.stdin,
       output: process.stderr
     })
@@ -31,13 +33,6 @@ class CCS {
     this.rl.on('close', () => {
       process.exit(0)
     })
-
-    const backup = {
-      info: console.info,
-      error: console.error,
-      warn: console.warn
-    }
-
     ;['info', 'warn', 'error', 'debug'].forEach(type => {
       const backup = console[type]
       console[type] = (text: string, group: string) => {

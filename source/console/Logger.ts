@@ -1,8 +1,8 @@
+import Configuration from '../types/Configuration'
 import { LoggerLevel as Lvl } from '../types/Logger'
 import Colors from '../utils/Colors'
-import server from '../../start'
 
-const logger = () => {
+async function logger (config: Configuration) {
   const colorize = (level: Lvl) => {
     const obj = {
       info: Colors.green('INFO', true),
@@ -18,9 +18,9 @@ const logger = () => {
     const d = new Date().toLocaleString().replace(',', '').toUpperCase()
 
     console[type] = (text: string, group: string) => {
-      if (server.config.LeafMCBE.Terminal.showDate) {
+      if (config.LeafMCBE.Terminal.showDate) {
         if (group) {
-          if (server.config.LeafMCBE.Terminal.showGroup) {
+          if (config.LeafMCBE.Terminal.showGroup) {
             backup(`[${d} ${colorize(type as Lvl)}] [${group}] ${text}`)
           } else backup(`[${d} ${colorize(type as Lvl)}] ${text}`)
         } else {
@@ -28,7 +28,7 @@ const logger = () => {
         }
       } else {
         if (group) {
-          if (server.config.LeafMCBE.Terminal.showGroup) {
+          if (config.LeafMCBE.Terminal.showGroup) {
             backup(`[${colorize(type as Lvl)} | ${group}] ${text}`)
           } else backup(`${colorize(type as Lvl)} | ${text}`)
         } else {

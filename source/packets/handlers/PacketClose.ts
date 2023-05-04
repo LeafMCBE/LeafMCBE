@@ -4,7 +4,8 @@ import Player from '../../api/Player'
 import Colors from '../../utils/Colors'
 
 const PacketClose = (server: Server, client: Client) => {
-  if (!client.userData) return
+  if (!client) return
+  if (!client.getUserData()) return
 
   const player = new Player(client)
   delete server.players[
@@ -13,7 +14,6 @@ const PacketClose = (server: Server, client: Client) => {
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  if (!client && !client.getUserData()) return
   const maybe = () => server.broadcast(Colors.yellow(`${player.username} left`))
 
   server.plugins.do('onPlayerLeft', maybe, player)

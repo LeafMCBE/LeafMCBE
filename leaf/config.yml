@@ -4,7 +4,7 @@ Server:
   motd: 'Dedicated LeafMCBE Server'
   version: 1.19.80
   max_players: 5
-  offline: false
+  offline: true
 
 LeafMCBE:
   Terminal:

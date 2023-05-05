@@ -8,7 +8,7 @@ interface ResourcePackIdVersions {
 
 class ResourcePackStack {
   private mustAccept: boolean
-  private behaviourPacks: ResourcePackIdVersions[]
+  private behaviorPacks: ResourcePackIdVersions[]
   private resourcePacks: ResourcePackIdVersions[]
   private experiments = []
   private gameVersion: string
@@ -20,8 +20,8 @@ class ResourcePackStack {
     return this
   }
 
-  setBehaviourPacks (packs: ResourcePackIdVersions[]) {
-    this.behaviourPacks = packs
+  setBehaviorPacks (packs: ResourcePackIdVersions[]) {
+    this.behaviorPacks = packs
 
     return this
   }

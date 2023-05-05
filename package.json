@@ -5,10 +5,10 @@
   "main": "start.ts",
   "scripts": {
     "start": "node --loader ts-node/esm .",
-    "start:dev": "nodemon .",
-    "start:prod": "npm run build:remove && npm run build:lint && npm run build:format && npm run build && node build/start.js",
+    "dev": "nodemon .",
     "test": "node --loader ts-node/esm test.ts",
-    "build": "tsc",
+    "build": "npm run build:remove && npm run build:lint && npm run build:format && npm run build:compile && node build/start.js",
+    "build:compile": "tsc",
     "build:remove": "rimraf build",
     "build:lint": "eslint . --fix",
     "build:format": "prettier-standard ."

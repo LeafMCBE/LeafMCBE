@@ -5,7 +5,7 @@ import { readFile } from 'fs/promises'
 import AvailableCommands from '../request/AvailableCommands'
 
 import ResourcePacksInfo from '../private/ResourcePacksInfo'
-import RPSClientResponse from '../private/ResourcePackClientResponse'
+import RPSClientResponse from './ResourcePackClientResponse'
 
 const PacketJoin = (server: Server, client: Client) => {
   if (!client) return
@@ -20,10 +20,6 @@ const PacketJoin = (server: Server, client: Client) => {
     .setBehaviourPacks([])
     .setTexturePacks([])
     .send(client)
-
-  client.once('resource_pack_client_response', async packet => {
-    RPSClientResponse(client, packet)
-  })
 }
 
 export default PacketJoin

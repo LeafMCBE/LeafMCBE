@@ -18,6 +18,7 @@ import Configuration from './types/Configuration'
 import CommandsManager from './api/commands/Manager'
 import PacketCmdReq from './packets/handlers/PacketCommandRequest'
 import CCS from './console/Console'
+import RPSClientResponse from './packets/handlers/ResourcePackClientResponse'
 
 class Server {
   public config: Configuration
@@ -88,6 +89,9 @@ class Server {
         break
       case 'command_request':
         PacketCmdReq(this, client, packet)
+        break
+      case 'resource_pack_client_response':
+        RPSClientResponse(client, packet, packet.data.params.response_status)
         break
     }
   }

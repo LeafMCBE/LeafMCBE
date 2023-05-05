@@ -34,6 +34,9 @@ class Server {
   private async start () {
     await validate()
     this.config = parse(await readFile('./leaf/config.yml', 'utf-8'))
+    if (this.config.LeafMCBE.Terminal.debug) {
+      process.env.DEBUG = '*'
+    }
     await logger(this.config)
 
     await this.startSrv()

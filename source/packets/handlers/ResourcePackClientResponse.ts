@@ -7,7 +7,6 @@ import ResourcePackStack from '../private/ResourcePackStack'
 import StartGame from '../resources/StartGame'
 
 function RPSClientResponse (client: Client, packet: any, type: string) {
-  console.log(packet)
   switch (type) {
     case 'completed':
       client.queue('start_game', StartGame)

@@ -1,5 +1,3 @@
-process.env.DEBUG = 'minecraft-protocol'
-
 // eslint-disable-next-line import/first
 import Server from './source/Server'
 

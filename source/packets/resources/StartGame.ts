@@ -4,7 +4,7 @@ export default {
   player_gamemode: 0,
   player_position: {
     x: 0,
-    y: 0,
+    y: -46.5,
     z: 0
   },
   rotation: {

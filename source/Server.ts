@@ -19,6 +19,7 @@ import CommandsManager from './api/commands/Manager'
 import PacketCmdReq from './packets/handlers/PacketCommandRequest'
 import CCS from './console/Console'
 import RPSClientResponse from './packets/handlers/ResourcePackClientResponse'
+import zlib from 'zlib'
 
 class Server {
   public config: Configuration
@@ -95,6 +96,12 @@ class Server {
         break
       case 'resource_pack_client_response':
         RPSClientResponse(client, packet, packet.data.params.response_status)
+        break
+      case 'tick_sync':
+        client.queue('tick_sync', {
+          request_time: packet.data.params.request_time,
+          response_time: BigInt(Date.now())
+        })
         break
     }
   }

@@ -1,3 +1,5 @@
+process.env.DEBUG = '*'
+
 // eslint-disable-next-line import/first
 import Server from './source/Server'
 

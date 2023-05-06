@@ -33,7 +33,7 @@ class CCS {
     this.rl.on('close', () => {
       process.exit(0)
     })
-    ;['info', 'warn', 'error', 'debug'].forEach(type => {
+    ;['info', 'warn', 'error', 'debug', 'log'].forEach(type => {
       const backup = console[type]
       console[type] = (text: string, group: string) => {
         if (showPrompt) {

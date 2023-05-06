@@ -4,8 +4,10 @@ import Entities from '../resources/Entities'
 import CreativeContent from '../resources/CreativeContent'
 import ResourcePackStack from '../private/ResourcePackStack'
 import StartGame from '../resources/StartGame'
+import AvailableCommands from '../request/AvailableCommands'
+import Server from '../../Server'
 
-function RPSClientResponse (client: Client, packet: any, type: string) {
+function RPSClientResponse (server: Server, client: Client, packet: any, type: string) {
   function generateFlatChunk (): Buffer {
     const chunk = Buffer.alloc(16 * 16 * 256)
     chunk.fill(2) // fill entire buffer with 2
@@ -30,6 +32,8 @@ function RPSClientResponse (client: Client, packet: any, type: string) {
       client.queue('chunk_radius_update', {
         chunk_radius: chunkRadius
       })
+      client.queue('available_commands', AvailableCommands(server))
+      client.queue('player_hotbar', { selected_slot: 1, window_id: 'inventory', select_slot: true })
 
       client.queue('network_chunk_publisher_update', {
         coordinates: {

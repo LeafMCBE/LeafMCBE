@@ -15,6 +15,9 @@ A Minecraft: Bedrock Edition Server Software written in TypeScript. **NOTE:** Se
 2. Spawn Supported
 3. Title Supported
 4. Toast Supported
+5. Commands Supported
+6. Console Commands Supported
+7. Flat World Supported (Not superflat)
 
 # Documention & FAQ
 
